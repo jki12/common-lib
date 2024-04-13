@@ -6,7 +6,7 @@
 
   <groupId>com.nhnacademy</groupId>
   <artifactId>common</artifactId>
-  <version>1.0.3-TEST</version>
+  <version>1.0.4-TEST</version>
   <packaging>jar</packaging>
 
   <properties>
