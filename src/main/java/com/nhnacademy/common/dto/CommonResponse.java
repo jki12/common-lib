@@ -1,5 +1,6 @@
 package com.nhnacademy.common.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.LocalDateTime;
 import java.util.function.Supplier;
 
@@ -18,6 +19,7 @@ public class CommonResponse<T> {
     private final String message;
     private final LocalDateTime timestamp;
 
+    @JsonCreator
     private CommonResponse(String status, T data, String message) {
         this.status = status;
         this.data = data;
