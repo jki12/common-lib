@@ -19,7 +19,7 @@ public class CommonResponse<T> {
     private final String message;
     private final LocalDateTime timestamp;
 
-    @JsonCreator
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     private CommonResponse(String status, T data, String message) {
         this.status = status;
         this.data = data;
