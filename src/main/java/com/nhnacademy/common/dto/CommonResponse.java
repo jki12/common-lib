@@ -1,10 +1,11 @@
 package com.nhnacademy.common.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.LocalDateTime;
 import java.util.function.Supplier;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /***
  * 기본 응답 포맷
@@ -12,14 +13,14 @@ import lombok.Getter;
  */
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CommonResponse<T> {
 
-    private final String status;
-    private final T data;
-    private final String message;
-    private final LocalDateTime timestamp;
+    private String status;
+    private T data;
+    private String message;
+    private LocalDateTime timestamp;
 
-    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     private CommonResponse(String status, T data, String message) {
         this.status = status;
         this.data = data;
