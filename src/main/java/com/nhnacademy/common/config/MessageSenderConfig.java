@@ -16,7 +16,7 @@ import java.time.Duration;
 
 @Slf4j
 @Configuration
-public class AppConfig {
+public class MessageSenderConfig {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
