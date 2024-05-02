@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +19,7 @@ import java.time.Duration;
 @Configuration
 public class MessageSenderConfig {
     @Bean
+    @ConditionalOnMissingBean(RestTemplate.class)
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
                 .setConnectTimeout(Duration.ofSeconds(5))
@@ -26,6 +28,7 @@ public class MessageSenderConfig {
     }
 
     @Bean
+    @ConditionalOnBean(RestTemplate.class)
     @ConditionalOnClass(DoorayHookSender.class)
     @ConditionalOnProperty(value = "message.dooray.hookUrl")
     public DoorayHookSender doorayHookSender(RestTemplate restTemplate, @Value("message.dooray.hookUrl") String url) {
