@@ -1,6 +1,7 @@
 package com.nhnacademy.common.config;
 
 import com.nhn.dooray.client.DoorayHookSender;
+import com.nhnacademy.common.notification.MessageSender;
 import com.nhnacademy.common.notification.impl.DoorayMessageSenderImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,16 +29,15 @@ public class MessageSenderConfig {
     }
 
     @Bean
-    @ConditionalOnBean(RestTemplate.class)
     @ConditionalOnClass(DoorayHookSender.class)
-    @ConditionalOnProperty(value = "message.dooray.hookUrl")
-    public DoorayHookSender doorayHookSender(RestTemplate restTemplate, @Value("message.dooray.hookUrl") String url) {
+    @ConditionalOnProperty(value = "message.dooray.hook-url")
+    public DoorayHookSender doorayHookSender(RestTemplate restTemplate, @Value("${message.dooray.hook-url}") String url) {
         return new DoorayHookSender(restTemplate, url);
     }
 
     @Bean
     @ConditionalOnBean(DoorayHookSender.class)
-    public DoorayMessageSenderImpl messageSender(DoorayHookSender doorayHookSender) {
+    public MessageSender messageSender(DoorayHookSender doorayHookSender) {
         return new DoorayMessageSenderImpl(doorayHookSender);
     }
 }
