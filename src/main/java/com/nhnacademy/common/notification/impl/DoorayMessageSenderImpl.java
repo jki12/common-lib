@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 public class DoorayMessageSenderImpl implements MessageSender {
     private final DoorayHookSender doorayHookSender;
 
+    @Override
     public void send(String message) {
         DoorayHook hook = DoorayHook.builder()
                 .botName(BOT_NAME)
