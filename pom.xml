@@ -31,12 +31,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.nhn.dooray.messenger</groupId>
-      <artifactId>dooray-hook-sender</artifactId>
-      <version>1.2.0-RELEASE</version>
-    </dependency>
-
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
@@ -68,15 +62,8 @@
   <distributionManagement>
     <repository>
       <id>release</id>
-      <url>https://github.com/nhnacademy-aiot1-T1/nhnacademy-common-maven-repo/raw/main/releases</url>
+      <url>https://github.com/jki12/common-lib-maven-repo/raw/main/releases</url>
     </repository>
   </distributionManagement>
-
-  <repositories>
-    <repository>
-      <id>dooray-hook-sender</id>
-      <url>https://github.com/edu-springboot/edu-springboot-maven-repo/raw/master/releases</url>
-    </repository>
-  </repositories>
 
 </project>
