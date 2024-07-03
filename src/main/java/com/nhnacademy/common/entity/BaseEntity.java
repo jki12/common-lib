@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-@ConditionalOnProperty(value = "common.entity.enable", havingValue = "true")
+@ConditionalOnProperty(value = "common.entity.enabled", havingValue = "true")
 @Getter
 @Setter
 @MappedSuperclass
