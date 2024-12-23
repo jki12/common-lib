@@ -1,27 +1,28 @@
-package com.nhnacademy.common.entity;
+package com.nhnacademy.common.entity.base;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@ConditionalOnProperty(value = "common.entity.enabled", havingValue = "true")
 @Getter
 @Setter
-@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseDateTimeEntity extends BaseEntity {
+@MappedSuperclass
+public abstract class BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDateTime;
 
     @LastModifiedDate
+    @Column
     private LocalDateTime updatedDateTime;
 }
